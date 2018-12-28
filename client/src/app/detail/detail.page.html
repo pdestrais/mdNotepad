@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/notes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ note.title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleSearchbar()">
+        <ion-icon slot="icon-only" name="pricetag"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="mode=='edit'" (click)="enterMarkdownViewMode()">
+        <ion-icon slot="icon-only" name="eye"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="mode=='view'" (click)="quitMarkdownViewMode()">
+          <ion-icon slot="icon-only" name="exit"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="mode=='edit'" (click)="saveNote()">
+          <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="mode=='edit'" (click)="deleteNote()">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding>
+  <div>
+      <ion-chip *ngFor="let tag of note.tags" (click)="removeTagFromNote(tag)">
+          <ion-label>{{ tag }}</ion-label>
+          <ion-icon size="small" name="close-circle"></ion-icon>
+      </ion-chip>
+      <ion-chip color="light" (click)="toggleSearchbar()">
+          <ion-label>add...</ion-label>
+      </ion-chip>      
+  </div>        
+  <ion-grid *ngIf="showSearchbar">
+      <ion-row>
+        <ion-col size="9">
+            <ion-searchbar placeholder="new tag" debounce="300" showCancelButton=true [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" (ionCancel)="cancelSearchTag()"></ion-searchbar>
+          </ion-col>
+          <ion-col align-self-center>
+              <ion-button size="small" fill="outline" (click)="addTagToNote(searchTerm)">
+                  <ion-icon slot="icon-only" size="small" name="add-circle-outline"></ion-icon>
+                </ion-button> 
+              </ion-col>
+        </ion-row>
+  </ion-grid>
+  <ion-list>
+      <ion-item detail *ngFor="let item of filteredTags" (click)="addTagToNote(item.name)">
+          <ion-label>
+              {{item.name}}
+            </ion-label>
+<!--             <ion-icon name="add-circle-outline" size="large" slot="end"></ion-icon>  
+ -->      </ion-item>
+  </ion-list>
+  <div *ngIf="mode=='edit'">
+      <ngx-wig [(ngModel)]="note.content" [buttons]="'bold,italic,link,heading1,heading2,heading3,uList,oList,quote,code,blockcode,horizontalLine'" [isSourceModeAllowed]=true></ngx-wig>
+  </div>
+  <div *ngIf="mode=='view'">
+      <app-mdtohtml *ngIf="mode=='view'" content={{note.content}}></app-mdtohtml>
+  </div>
+</ion-content>

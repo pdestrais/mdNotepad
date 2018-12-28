@@ -1,0 +1,16 @@
+:host ::ng-deep  .alert-title {
+  text-align: center;
+  padding: 10px;
+  background-color: var(--ion-color-light);
+}
+
+:host ::ng-deep .alert-sub-title {
+  text-align: center;
+}
+
+
+:host ::ng-deep .alert-message {
+  text-align: center;
+}
+
+

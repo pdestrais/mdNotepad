@@ -1,0 +1,7 @@
+{
+  "name": "mdNotepad",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

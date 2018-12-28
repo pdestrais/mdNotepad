@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/notes"></ion-back-button>
+      </ion-buttons>    
+    <ion-title>tags</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="tagView" padding>
+  <ion-searchbar placeholder="search tag or word" debounce="300" showCancelButton=true [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" (ionCancel)="cancelSearchTag()"></ion-searchbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let tag of filteredTags">
+        <ion-card >
+            <ion-item [href]="'/tags/' + tag._id" routerDirection="forward">
+                <ion-label>{{ tag.name }}</ion-label>
+                <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+            </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- 
+                <ion-col align-self-center>
+                <ion-button size="small" fill="outline" (click)="fullTextSearch(searchTerm)">
+                    <ion-icon slot="icon-only" size="small" name="search"></ion-icon>
+                  </ion-button> 
+                </ion-col>
+
+   -->
+   <ion-button expand="block" (click)="addTag()">Add tag</ion-button>
+</ion-content>
+<ion-content *ngIf="!tagView">
+    <ion-item *ngIf="selectedTag">
+        <ion-label position="fixed">Tag name</ion-label>
+        <ion-input value="{{selectedTag.name}}" (ionChange)="changeTagName($event)"></ion-input>
+      </ion-item>
+    <ion-button expand="block" (click)="renameTag()">Rename tag</ion-button>
+    <ion-button expand="block" (click)="deleteTag()">Delete tag</ion-button>
+    </ion-content>
