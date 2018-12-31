@@ -64,7 +64,8 @@
  -->      
 <!--     <ion-item button detail mode="ios" *ngFor="let note of notes" [href]="'/notes/' + note._id" routerDirection="forward">
  -->
-    <ion-item class="ion-item-home" button detail *ngFor="let note of filteredNotes" [href]="'/notes/' + note._id" routerDirection="root">
+<!--   <ion-item class="ion-item-home" button detail *ngFor="let note of filteredNotes" [href]="'/notes/' + note._id" routerDirection="root">
+ -->  <ion-item class="ion-item-home" button detail *ngFor="let note of filteredNotes" [routerLink]="['/notes', note._id]" routerDirection="root">
     <ion-label>{{ note.title }}</ion-label>
     </ion-item>
   </ion-list>

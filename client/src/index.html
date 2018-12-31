@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <title>Ionic App</title>
 
-  <!-- To use with electron -->
-  <!-- <base href="./"/> -->
-  <!-- To use without electron -->
-  <base href="/"/>
+  <!-- if <base href> is set to "./", 'href' can not be used, angulars 'routerLink' should be used instead -->
+  <!-- But this is required for electron to work -->
+  <!-- If electron is not a deployment target, it's best to keep  <base href> to "/" as mentioned in the angualr doc (see https://angular.io/guide/router#html5-urls-and-the--base-href) -->
+  <base href="./"/>
 
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">

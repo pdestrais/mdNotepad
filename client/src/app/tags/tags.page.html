@@ -13,7 +13,7 @@
     <ion-row>
       <ion-col *ngFor="let tag of filteredTags">
         <ion-card >
-            <ion-item [href]="'/tags/' + tag._id" routerDirection="forward">
+            <ion-item [routerLink]="['/tags', tag._id]" routerDirection="forward">
                 <ion-label>{{ tag.name }}</ion-label>
                 <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
             </ion-item>
@@ -38,4 +38,4 @@
       </ion-item>
     <ion-button expand="block" (click)="renameTag()">Rename tag</ion-button>
     <ion-button expand="block" (click)="deleteTag()">Delete tag</ion-button>
-    </ion-content>
+</ion-content>
