@@ -31,7 +31,7 @@ To test with NodeJS, go to root directory and start nodeJS with
 ### build prepare for the different deployment targets
 First, build the application for the 'client' directory
 
-     ionic build --prod or npm run build
+     ionic build --prod or npm run buildProd
 
 - prepare to build the desktop application using electron builder
 
