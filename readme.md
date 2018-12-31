@@ -31,7 +31,7 @@ To test with NodeJS, go to root directory and start nodeJS with
 ### build prepare for the different deployment targets
 First, build the application for the 'client' directory
 
-     ionic build --prod
+     ionic build --prod or npm run build
 
 - prepare to build the desktop application using electron builder
 
@@ -41,7 +41,7 @@ First, build the application for the 'client' directory
   A 'dmg' file has been created, double click on the file to install on the OS.
 
 - prepare to release publish as a nodeJS app on the IBM cloud (you need to have a user id on IBM cloud).
-Change to the 'server' directory, then login to couldfoundry and push the nodeJS as a cloudfoundry application :
+Go to the root directory, then login to could foundry (if not yet done) and push the nodeJS as a cloudfoundry application :
 
        cf login
        cf push
