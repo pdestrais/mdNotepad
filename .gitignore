@@ -28,7 +28,6 @@ client/plugins/
 client/plugins/android.json
 client/plugins/ios.json
 client/www/
-client/build
 $RECYCLE.BIN/
 
 .DS_Store
