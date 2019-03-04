@@ -5,22 +5,18 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PreferencesPage } from './preferences.page';
+import { PreferencesPage, SupportPage } from './preferences.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: PreferencesPage
-  }
+	{
+		path: '',
+		component: PreferencesPage
+	}
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [PreferencesPage]
+	imports: [ CommonModule, FormsModule, IonicModule, RouterModule.forChild(routes) ],
+	entryComponents: [ SupportPage ],
+	declarations: [ PreferencesPage, SupportPage ]
 })
 export class PreferencesPageModule {}

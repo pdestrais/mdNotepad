@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>MD Notepad App</title>
@@ -7,17 +8,35 @@
   <!-- if <base href> is set to "./", 'href' can not be used, angulars 'routerLink' should be used instead -->
   <!-- But this is required for electron to work -->
   <!-- If electron is not a deployment target, it's best to keep  <base href> to "/" as mentioned in the angualr doc (see https://angular.io/guide/router#html5-urls-and-the--base-href) -->
-  <base href="./"/>
+  <base href="./" />
 
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <meta name="theme-color" content="#448AFF">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="MD Notepad App">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
 
-<!--   <link rel="icon" type="image/png" href="assets/icon/favicon.png">
+  <link rel="icon" href="assets/icons/ios/AppIcon.appiconset/Icon-App-60x60@2x.png">
+  <link rel="apple-touch-icon" href="assets/icons/ios/AppIcon.appiconset/Icon-App-60x60@2x.png">
+  <link rel="apple-touch-startup-image" href="assets/icons/ios/AppIcon.appiconset/Icon-App-60x60@2x.png">
+
+
+  <!--   <link rel="icon" type="image/png" href="assets/icon/favicon.png">
  -->
-  <link rel="icon" type="image/png" href="assets/icon/notepad.png">
-  <link href="assets/fonts/material-design.css" rel="stylesheet"/>
+  <link href="assets/fonts/material-design.css" rel="stylesheet" />
   <link href="assets/fonts/fonts.css" rel="stylesheet">
+  <!--  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+ 
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/agate.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/ace/1.2.8/ace.js"></script>
+  <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+-->
 
 
   <!-- add to homescreen for ios -->
@@ -27,7 +46,9 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1976d2">
 </head>
+
 <body>
   <app-root></app-root>
 </body>
+
 </html>

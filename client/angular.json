@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
- "version": 1,
+  "version": 1,
   "defaultProject": "app",
   "newProjectRoot": "projects",
   "projects": {
@@ -20,21 +20,19 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "assets": [
-              {
+            "assets": [{
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
               },
               {
                 "glob": "**/*.svg",
-                "input": "node_modules/@ionic/angular/dist/ionic/svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
               },
               "src/manifest.json"
             ],
-            "styles": [
-              {
+            "styles": [{
                 "input": "src/theme/variables.scss"
               },
               {
@@ -45,12 +43,10 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -90,8 +86,7 @@
             "karmaConfig": "src/karma.conf.js",
             "styles": [],
             "scripts": [],
-            "assets": [
-              {
+            "assets": [{
                 "glob": "favicon.ico",
                 "input": "src/",
                 "output": "/"

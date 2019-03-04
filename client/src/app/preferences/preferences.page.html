@@ -1,42 +1,60 @@
 <ion-header>
-    <ion-toolbar color="primary">
-        <ion-title>
-            preferences
-        </ion-title>
-        <ion-buttons slot="start">
-            <ion-back-button icon="arrow-round-back"></ion-back-button>
-<!--             <ion-button (click)="goBack()">
-              <ion-icon slot="icon-only" name="arrow-round-back"></ion-icon>
-            </ion-button>
- -->        </ion-buttons>
-    </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-title>
+      preferences
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-grid>
-        <ion-row justify-content-center>
-          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-            <div padding>
-              <ion-item>
-                <ion-label position="stacked">Remote Cloudant Database URL</ion-label>
-                <ion-input type="text" [(ngModel)]="remoteDBURL" (ngModelChange)="checkURLValidity()" placeholder="https://userid:password@url/db" clear-input="true"></ion-input>
-              </ion-item>
-            </div>
-            <div padding>
-<!--                 <ion-icon size="large" slot="start" src="/assets/icon/sync.svg"></ion-icon>
-                <img src="/assets/icon/sync.svg" width="100px"/>
- -->                <ion-item [disabled]="!valid" class="customButton" tappable (click)="syncWithRemoteDB()">
-                      <img src="assets/icon/sync.svg" width="100px" height="50px" slot="start"/>
-                      <div style="text-align: center">Sync local with remote DB</div>
-                    </ion-item>
-<!--               <ion-button size="default" (click)="syncWithRemoteDB()" expand="block">Overwrite local with remote DB<ion-icon src="/assets/icon/sync.png"></ion-icon></ion-button>
- -->
-              <ion-item [disabled]="!valid" class="customButton" tappable (click)="replAndSyncWithRemoteDB()">
-                  <img src="assets/icon/replAndSync.svg" width="100px" height="50px" slot="start"/>Overwrite local with remote DB
-              </ion-item>
-            </div>
-          </ion-col>
-        </ion-row>
-        <ion-row *ngIf="loading">Loading...</ion-row>
-      </ion-grid>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <ion-item-group>
+          <ion-item-divider color="secondary">
+            <ion-label>Automatic note saving (minute - 0 means no saving)</ion-label>
+          </ion-item-divider>
+          <ion-item>
+            <ion-range min="0" max="10" step="2" snaps="true" pin="true" [(ngModel)]="savingInterval" debounce="1000"
+              (ionChange)="persistSavingInterval($event)">
+              <ion-icon size="small" slot="start" name="remove"></ion-icon>
+              <ion-icon size="small" slot="end" name="add"></ion-icon>
+            </ion-range>
+            <ion-chip color="primary">
+              <ion-label>{{savingInterval}}</ion-label>
+            </ion-chip>
+          </ion-item>
+
+          <ion-item-divider color="secondary">
+            <ion-label>Remote Cloudant Database URL</ion-label>
+            <ion-button size="small" shape="round" fill="outline" slot="end" (click)="showSupportText()">help<ion-icon
+                size='small' slot="end" name="help"></ion-icon>
+            </ion-button>
+          </ion-item-divider>
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="remoteDBURL" (ngModelChange)="checkURLValidity()" placeholder="https://userid:password@url/db"
+              clear-input="true"></ion-input>
+          </ion-item>
+          <ion-button expand="full" [disabled]="!valid" (click)="syncWithRemoteDB()">
+            <ion-icon slot="start" class="bigger" src="assets/icon/sync.svg"></ion-icon>
+            Sync local <br> with remote DB
+          </ion-button>
+          <ion-button expand="full" [disabled]="!valid" (click)="replAndSyncWithRemoteDB()">
+            <ion-icon slot="start" class="bigger" src="assets/icon/replAndSync.svg"></ion-icon>
+            Overwrite local <br> with remote DB
+          </ion-button>
+        </ion-item-group>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="loading">
+      <ion-col>
+        <h5 text-center margin-top>Loading</h5>
+        <div text-center><IMG SRC="assets/icon/Blocks-1.2s-100px.gif"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
